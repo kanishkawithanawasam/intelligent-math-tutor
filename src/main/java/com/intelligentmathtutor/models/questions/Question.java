@@ -7,6 +7,7 @@ public abstract class Question {
     private final int maxTime;
     private String question;
     private final char[] operators;
+    private final String[] boolOperators;
     Random random ;
     /**
      *
@@ -17,6 +18,7 @@ public abstract class Question {
         this.level = level;
         this.maxTime = maxTime;
         operators = new char[]{'*','-','+','/'};
+        boolOperators = new String[]{"<",">","<=",">=","=="};
         random = new Random();
     }
 
@@ -56,8 +58,12 @@ public abstract class Question {
         return operators[random.nextInt(operators.length)];
     }
 
+    public String getBoolOperator() {
+        return boolOperators[random.nextInt(boolOperators.length)];
+    }
+
     /**
-     * Retrun a random number between min and max.
+     * Return a random number between min and max.
      * @param min to be given
      * @param max to be give
      * @return random number generated,
