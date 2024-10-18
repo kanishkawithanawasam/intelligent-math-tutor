@@ -1,7 +1,11 @@
 package com.intelligentmathtutor.models.questions;
 
+import java.util.HashMap;
 import java.util.Random;
 
+/**
+ * Defines basic features of a particular question.
+ */
 public abstract class Question {
     private final int level;
     private final int maxTime;
@@ -9,6 +13,7 @@ public abstract class Question {
     private final char[] operators;
     private final String[] boolOperators;
     private final String questionTitle;
+    private final HashMap<Integer,Integer> levelMarks;
     Random random ;
     /**
      *
@@ -22,6 +27,10 @@ public abstract class Question {
         operators = new char[]{'*','-','+','/'};
         boolOperators = new String[]{"<",">","<=",">=","=="};
         random = new Random();
+        levelMarks = new HashMap<>();
+        levelMarks.put(1,5);
+        levelMarks.put(2,10);
+        levelMarks.put(3,15);
     }
 
     /**
@@ -74,8 +83,20 @@ public abstract class Question {
         return random.nextInt(1+max-min)+min;
     }
 
+    /**
+     *
+     * @return Returns the title of the question
+     */
     public String getQuestionTitle() {
         return questionTitle;
+    }
+
+    /**
+     * Returns the reward marks associated with a particular method.
+     * @return The reward mark for the question.
+     */
+    public int getLevelMark() {
+        return levelMarks.get(level);
     }
 
     @Override
