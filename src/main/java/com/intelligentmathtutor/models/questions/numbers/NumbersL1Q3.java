@@ -8,7 +8,7 @@ import com.intelligentmathtutor.models.questions.Question;
 public class NumbersL1Q3 extends Question {
 
     public NumbersL1Q3() {
-        super(1, 15); // Set base settings
+        super(1, 15,"Determine whether the boolean expression is true or false."); // Set base settings
 
         // Generate question
         String question = String.valueOf(this.getRandomNumber(1, 10)) +

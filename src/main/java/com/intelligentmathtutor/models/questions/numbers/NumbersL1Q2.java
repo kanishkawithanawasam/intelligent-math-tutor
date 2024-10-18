@@ -8,7 +8,8 @@ import com.intelligentmathtutor.models.questions.Question;
 public class NumbersL1Q2 extends Question {
 
     public NumbersL1Q2() {
-        super(1, 15); // Set base settings
+        super(1, 15, "Solve the expression and provide the answer to two" +
+                "decimal places."); // Set base settings
 
         // Generate question
         String question = String.valueOf(this.getRandomNumber(1, 10)) +
