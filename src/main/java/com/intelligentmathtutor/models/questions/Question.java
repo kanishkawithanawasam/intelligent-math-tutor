@@ -8,15 +8,17 @@ public abstract class Question {
     private String question;
     private final char[] operators;
     private final String[] boolOperators;
+    private final String questionTitle;
     Random random ;
     /**
      *
      * @param level defines the level of the question
      * @param maxTime defines the recommended maximum time
      */
-    public Question(int level, int maxTime) {
+    public Question(int level, int maxTime, String questionTitle1) {
         this.level = level;
         this.maxTime = maxTime;
+        this.questionTitle = questionTitle1;
         operators = new char[]{'*','-','+','/'};
         boolOperators = new String[]{"<",">","<=",">=","=="};
         random = new Random();
@@ -72,8 +74,13 @@ public abstract class Question {
         return random.nextInt(1+max-min)+min;
     }
 
+    public String getQuestionTitle() {
+        return questionTitle;
+    }
+
     @Override
     public String toString() {
         return question;
     }
+
 }
