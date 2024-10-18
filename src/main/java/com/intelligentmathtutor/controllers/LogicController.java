@@ -1,11 +1,20 @@
 package com.intelligentmathtutor.controllers;
 import org.apache.commons.jexl3.*;
 
+
+/**
+ * Handles the logical processing of a mathematical or boolean expression.
+ */
 public class LogicController {
     JexlEngine jexl = new JexlBuilder().create();
     JexlContext context = new MapContext();
     JexlExpression jexlExpression;
 
+    /**
+     * Evaluates a given mathematical expression
+     * @param expression The expression to be solved.
+     * @return The result after solving.
+     */
     public LogicController eval(String expression) {
         jexlExpression = jexl.createExpression(expression);
         return this;
@@ -17,6 +26,14 @@ public class LogicController {
      */
     public int toNearestInt() {
         return (int) Math.round((double) jexlExpression.evaluate(context));
+    }
+
+    /**
+     *
+     * @return true if the inequality satisfied, otherwise false
+     */
+    public boolean getBooleanResult() {
+        return (boolean) jexlExpression.evaluate(context);
     }
 
     /**
