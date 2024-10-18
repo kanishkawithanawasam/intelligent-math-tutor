@@ -1,4 +1,4 @@
-package com.intelligentmathtutor.models.questions.numbers;
+package com.intelligentmathtutor.models.questions.numbers.level1;
 
 import com.intelligentmathtutor.models.questions.Question;
 

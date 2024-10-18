@@ -1,4 +1,4 @@
-package com.intelligentmathtutor.models.questions.numbers;
+package com.intelligentmathtutor.models.questions.numbers.level1;
 
 import com.intelligentmathtutor.models.questions.Question;
 
@@ -11,9 +11,9 @@ public class NumbersL1Q4 extends Question {
         super(1, 25,"Solve the expression" +
                 "and provide the answer to 2 decimal places."); // Set base settings
 
-        int preBracketTerms = (int) this.getRandomNumber(1,3);
-        int postBracketTerms = (int) this.getRandomNumber(1,3);
-        int inBracketTerms = (int) this.getRandomNumber(1,4);
+        int preBracketTerms = 1;
+        int postBracketTerms = 1;
+        int inBracketTerms = 2;
         StringBuilder question= new StringBuilder();
         for (int i = 0; i < preBracketTerms; i++) {
             question.append(this.getRandomNumber(1, 10));
