@@ -6,7 +6,7 @@ import org.apache.commons.jexl3.*;
 /**
  * Handles the logical processing of a mathematical or boolean expression.
  */
-public class LogicController {
+public class LogicController implements ILogicController {
     JexlEngine jexl = new JexlBuilder().create();
     JexlContext context = new MapContext();
     JexlExpression jexlExpression;
@@ -44,6 +44,10 @@ public class LogicController {
      */
     public double to2decimals() {
         return Math.round((double) jexlExpression.evaluate(context)*100.0)/100.0;
+    }
+
+    public String evalAlgebra(){
+        return jexlExpression.evaluate(context).toString();
     }
 
     /**
