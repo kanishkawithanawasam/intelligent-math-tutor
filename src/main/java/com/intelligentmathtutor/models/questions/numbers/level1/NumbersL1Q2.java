@@ -9,7 +9,7 @@ public class NumbersL1Q2 extends Question {
 
     public NumbersL1Q2() {
         super(1, 15, "Solve the expression and provide the answer to two" +
-                "decimal places."); // Set base settings
+                "decimal places.", QuestionType.NUMBER_QUESTION); // Set base settings
 
         // Generate question
         String question = String.valueOf(this.getRandomInteger(1, 10)) +

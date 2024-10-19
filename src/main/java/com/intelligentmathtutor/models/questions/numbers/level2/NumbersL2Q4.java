@@ -9,7 +9,7 @@ public class NumbersL2Q4 extends Question {
 
     public NumbersL2Q4() {
         super(1, 25,"Solve the expression" +
-                "and provide the answer to 2 decimal places."); // Set base settings
+                "and provide the answer to 2 decimal places.", QuestionType.NUMBER_QUESTION); // Set base settings
 
         int preBracketTerms = (int) this.getRandomInteger(1,3);
         int postBracketTerms = (int) this.getRandomInteger(1,3);

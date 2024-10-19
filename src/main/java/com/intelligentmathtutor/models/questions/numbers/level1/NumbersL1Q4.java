@@ -9,7 +9,7 @@ public class NumbersL1Q4 extends Question {
 
     public NumbersL1Q4() {
         super(1, 25,"Solve the expression" +
-                "and provide the answer to 2 decimal places."); // Set base settings
+                "and provide the answer to 2 decimal places.", QuestionType.NUMBER_QUESTION); // Set base settings
 
         int preBracketTerms = 1;
         int postBracketTerms = 1;

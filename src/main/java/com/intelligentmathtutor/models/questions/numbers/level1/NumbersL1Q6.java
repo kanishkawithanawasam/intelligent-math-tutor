@@ -8,7 +8,7 @@ import com.intelligentmathtutor.models.questions.Question;
 public class NumbersL1Q6 extends Question {
 
     public NumbersL1Q6() {
-        super(1, 15,"Calculate the value"); // Set base settings
+        super(1, 15,"Calculate the value",QuestionType.NUMBER_QUESTION); // Set base settings
 
         // Generate question
         int num= (int) this.getRandomInteger(1, 10);

@@ -9,6 +9,16 @@ import java.util.regex.Pattern;
  * Defines basic features of a particular question.
  */
 public abstract class Question {
+
+    // Question type
+    public static enum QuestionType {
+        NUMBER_QUESTION,
+        ALGEBRA_QUESTION,
+        PROBABILITY_QUESTION;
+    }
+
+
+
     private final int level;
     private final int maxTime;
     private String questEvalExpres;
@@ -17,16 +27,22 @@ public abstract class Question {
     private final String[] boolOperators;
     private final String questionTitle;
     private final HashMap<Integer,Integer> levelMarks;
+    private String answer;
+    private QuestionType questionType;
+
     Random random ;
+
     /**
-     *
-     * @param level defines the level of the question
-     * @param maxTime defines the recommended maximum time
+     * Creates a question
+     * @param level Defines question level
+     * @param maxTime Defines maximum recommended time
+     * @param questionTitle Defines question title
+     * @param questionType Defines question type
      */
-    public Question(int level, int maxTime, String questionTitle1) {
+    public Question(int level, int maxTime, String questionTitle,QuestionType questionType) {
         this.level = level;
         this.maxTime = maxTime;
-        this.questionTitle = questionTitle1;
+        this.questionTitle = questionTitle;
         operators = new char[]{'*','-','+','/'};
         boolOperators = new String[]{"<",">","<=",">=","=="};
         random = new Random();
@@ -34,6 +50,7 @@ public abstract class Question {
         levelMarks.put(1,5);
         levelMarks.put(2,10);
         levelMarks.put(3,15);
+        this.questionType = questionType;
     }
 
     /**
@@ -73,6 +90,11 @@ public abstract class Question {
         return operators[random.nextInt(operators.length)];
     }
 
+
+    /**
+     *
+     * @return
+     */
     public String getBoolOperator() {
         return boolOperators[random.nextInt(boolOperators.length)];
     }
@@ -81,7 +103,7 @@ public abstract class Question {
      * Return a random number between min and max.
      * @param min to be given
      * @param max to be give
-     * @return random number generated,
+     * @return A random integer between min and max,
      */
     public double getRandomInteger(int min, int max) {
         return random.nextInt(1+max-min)+min;
@@ -91,7 +113,7 @@ public abstract class Question {
      * Returns a random double between min and max.
      * @param min Minimum to be produced
      * @param max Maximum number to be produced.
-     * @return
+     * @return A random double between min and max.
      */
     public double getRandomDouble(int min, int max) {
         return (random.nextInt(1+max-min)+min-random.nextDouble())*100/100;
@@ -118,6 +140,29 @@ public abstract class Question {
         return convertToText(questEvalExpres);
     }
 
+    /**
+     * Sets the answer to an unevaluated question.
+     * @param answer The evaluated answer.
+     */
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
+
+    /**
+     * Returns the answer to a question.
+     * @return The particular answer of a question.
+     */
+    public String getAnswer() {
+        return answer;
+    }
+
+    /**
+     * Gives the type of the question
+     * @return Question type.
+     */
+    public QuestionType getQuestionType() {
+        return questionType;
+    }
     private String convertToText(String expression) {
         Pattern pattern = Pattern.compile("\\d+\\.\\d+|\\d+");
         Matcher matcher = pattern.matcher(expression);
@@ -155,4 +200,5 @@ public abstract class Question {
 
         return modifiedExpression.toString();
     }
+
 }
