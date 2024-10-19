@@ -9,15 +9,15 @@ public class NumbersL2Q1 extends Question {
 
 
     public NumbersL2Q1() {
-        super(1, 15,"Solve the expression and provide the answer to 2 decimal places."); // Set base settings
+        super(1, 20,"Solve the expression and provide the answer to 2 decimal places."); // Set base settings
 
         // Generate question
-        String question = String.valueOf(this.getRandomNumber(1, 10)) +
+        String question = String.valueOf(this.getRandomDouble(1,15)) +
                 this.getOperator() +
-                this.getRandomNumber(1, 10);
+                this.getRandomDouble(1, 10);
 
         // Set question
-        this.setQuestion(question);
+        this.setQuestEvalExpres(question);
     }
 
 

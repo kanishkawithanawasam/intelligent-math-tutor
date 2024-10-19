@@ -11,12 +11,12 @@ public class NumbersL2Q3 extends Question {
         super(1, 15,"Determine whether the boolean expression is true or false."); // Set base settings
 
         // Generate question
-        String question = String.valueOf(this.getRandomNumber(1, 10)) +
+        String question = String.valueOf(this.getRandomDouble(1, 10)) +
                 this.getBoolOperator()+
-                this.getRandomNumber(1,10);
+                this.getRandomDouble(1,10);
 
         // Set question
-        this.setQuestion(question);
+        this.setQuestEvalExpres(question);
     }
 
 

@@ -2,6 +2,8 @@ package com.intelligentmathtutor.models.questions;
 
 import java.util.HashMap;
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Defines basic features of a particular question.
@@ -9,7 +11,8 @@ import java.util.Random;
 public abstract class Question {
     private final int level;
     private final int maxTime;
-    private String question;
+    private String questEvalExpres;
+    private String questTextExpres;
     private final char[] operators;
     private final String[] boolOperators;
     private final String questionTitle;
@@ -49,16 +52,17 @@ public abstract class Question {
      *
      * @return the question
      */
-    public String getQuestion() {
-        return question;
+    public String getQuestEvalExpres() {
+        return questEvalExpres;
     }
 
     /**
      * Saves the question
-     * @param question :  Question to be set
+     * @param questEvalExpres :  Question to be set
      */
-    public void setQuestion(String question) {
-        this.question = question;
+    public void setQuestEvalExpres(String questEvalExpres) {
+        this.questEvalExpres = questEvalExpres;
+        this.questTextExpres = convertToText(questEvalExpres);
     }
 
     /**
@@ -79,8 +83,18 @@ public abstract class Question {
      * @param max to be give
      * @return random number generated,
      */
-    public double getRandomNumber(int min, int max) {
+    public double getRandomInteger(int min, int max) {
         return random.nextInt(1+max-min)+min;
+    }
+
+    /**
+     * Returns a random double between min and max.
+     * @param min Minimum to be produced
+     * @param max Maximum number to be produced.
+     * @return
+     */
+    public double getRandomDouble(int min, int max) {
+        return (random.nextInt(1+max-min)+min-random.nextDouble())*100/100;
     }
 
     /**
@@ -101,7 +115,44 @@ public abstract class Question {
 
     @Override
     public String toString() {
-        return question;
+        return convertToText(questEvalExpres);
     }
 
+    private String convertToText(String expression) {
+        Pattern pattern = Pattern.compile("\\d+\\.\\d+|\\d+");
+        Matcher matcher = pattern.matcher(expression);
+
+        // StringBuilder to build the new expression
+        StringBuilder modifiedExpression = new StringBuilder();
+
+        // Start position for appending parts of the expression
+        int lastPos = 0;
+
+        // Process each number found by the regex
+        while (matcher.find()) {
+            // Get the matched number as a string
+            String numberStr = matcher.group();
+            double number = Double.parseDouble(numberStr);
+
+            // Append the part of the expression before the current number
+            modifiedExpression.append(expression, lastPos, matcher.start());
+
+            // Check if it's effectively an integer
+            if (number == (int) number) {
+                // Replace with integer version
+                modifiedExpression.append((int) number);
+            } else {
+                // Leave it as is
+                modifiedExpression.append(numberStr);
+            }
+
+            // Update lastPos to the end of the current number
+            lastPos = matcher.end();
+        }
+
+        // Append the remaining part of the expression after the last number
+        modifiedExpression.append(expression.substring(lastPos));
+
+        return modifiedExpression.toString();
+    }
 }

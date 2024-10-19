@@ -11,11 +11,11 @@ public class NumbersL1Q5 extends Question {
         super(1, 15,"Calculate the value"); // Set base settings
 
         // Generate question
-        int num= (int) this.getRandomNumber(1, 10);
+        int num= (int) this.getRandomInteger(1, 10);
         String question = String.valueOf(num*num)+"^(1/2)";
 
         // Set question
-        this.setQuestion(question);
+        this.setQuestEvalExpres(question);
     }
 
 

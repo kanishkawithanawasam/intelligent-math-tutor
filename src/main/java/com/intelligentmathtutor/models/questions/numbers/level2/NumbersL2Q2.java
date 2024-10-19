@@ -8,18 +8,18 @@ import com.intelligentmathtutor.models.questions.Question;
 public class NumbersL2Q2 extends Question {
 
     public NumbersL2Q2() {
-        super(1, 15, "Solve the expression and provide the answer to two" +
+        super(1, 20, "Solve the expression and provide the answer to two" +
                 "decimal places."); // Set base settings
 
         // Generate question
-        String question = String.valueOf(this.getRandomNumber(1, 10)) +
+        String question = String.valueOf(this.getRandomDouble(1, 10)) +
                 this.getOperator() +
-                this.getRandomNumber(1, 10) +
+                this.getRandomDouble(1, 10) +
                 this.getOperator() +
-                this.getRandomNumber(1, 10);
+                this.getRandomDouble(1, 10);
 
         // Set question
-        this.setQuestion(question);
+        this.setQuestEvalExpres(question);
     }
 
 

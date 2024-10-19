@@ -4,6 +4,8 @@ import com.intelligentmathtutor.models.questions.Question;
 
 /**
  * Questions with square roots
+ * Level = 2
+ * Info: Roots may not be whole numbers.
  */
 public class NumbersL2Q5 extends Question {
 
@@ -11,14 +13,9 @@ public class NumbersL2Q5 extends Question {
         super(1, 15,"Calculate the value"); // Set base settings
 
         // Generate question
-        int num= (int) this.getRandomNumber(1, 10);
-        String question = String.valueOf(num*num)+"^(1/2)";
+        String question = String.valueOf(this.getRandomInteger(4,100))+"^(1/2)";
 
         // Set question
-        this.setQuestion(question);
+        this.setQuestEvalExpres(question);
     }
-
-
-
-
 }

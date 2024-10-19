@@ -12,14 +12,14 @@ public class NumbersL1Q2 extends Question {
                 "decimal places."); // Set base settings
 
         // Generate question
-        String question = String.valueOf(this.getRandomNumber(1, 10)) +
+        String question = String.valueOf(this.getRandomInteger(1, 10)) +
                 this.getOperator() +
-                this.getRandomNumber(1, 10) +
+                this.getRandomInteger(1, 10) +
                 this.getOperator() +
-                this.getRandomNumber(1, 10);
+                this.getRandomInteger(1, 10);
 
         // Set question
-        this.setQuestion(question);
+        this.setQuestEvalExpres(question);
     }
 
 
