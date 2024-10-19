@@ -1,4 +1,5 @@
 package com.intelligentmathtutor.controllers;
+import com.intelligentmathtutor.models.questions.Question;
 import org.apache.commons.jexl3.*;
 
 
@@ -12,11 +13,12 @@ public class LogicController {
 
     /**
      * Evaluates a given mathematical expression
-     * @param expression The expression to be solved.
+     * @param question The expression to be solved.
      * @return The result after solving.
      */
-    public LogicController eval(String expression) {
-        jexlExpression = jexl.createExpression(expression);
+    public LogicController eval(Question question) {
+        //System.out.println(expression);
+        jexlExpression = jexl.createExpression(question.getQuestEvalExpres());
         return this;
     }
 
